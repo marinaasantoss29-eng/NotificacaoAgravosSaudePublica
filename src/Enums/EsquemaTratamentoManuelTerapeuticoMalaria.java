@@ -1,0 +1,17 @@
+package Enums;
+
+public enum EsquemaTratamentoManuelTerapeuticoMalaria {
+    Infeccoes_por_Pv_com_Cloroquina_em_3_dias_e_Primaquina_em_7_dias,
+    Infeccoes_por_Pf_com_Quinina_em_3_dias_mais_Doxiclina_em_5_dias_primaquina_no_7_dias,
+    Infeccoes_mistas_por_Pv_mais_Pf_com_Mefloquina_em_dose_unica_e_primaquina_em_7_dias,
+    Infeccoes_por_Pm_com_cloroquina_em_3_dias,
+    Infeccoes_por_Pv_em_criancas_apresentando_v0mitos,_com_capsulas_retais_de_artesunato_em_4_dias_e_Primaquina_em_7_dias,
+    Infeccoes_por_Pf_com_Mefloquina_em_dose_unica_e_primaquina_no_segundo_dia,
+    Infeccoes_por_Pf_com_Quininaem_7_dias,
+    Infeccoes_por_Pf_de_criancas_com_capsulas_retais_de_artesunato_em_4_dias_e_dose_unica_de_Mefloquina_no_3_dia_e_Primaquina_no_5_ida,
+    Infeccoes_mistas_por_Pv_mais_Pf_com_Quinina_em_3_dias,_doxiciclina_em_5_dias_e_Primaquina_em_7_dias,
+    Prevencao_de_recaida_da_malaria_por_Pv_com_Cloroquina_em_dose_unica_semanal_durante_3_meses,
+    Malaria_grave_e_complicada,
+    Infeccoes_por_Pf_com_a_associacao_Artemeter_mais_Lumerfantrin_a_em_3_dias,
+    Outro_esquema_utilizado_por_medico_descrever
+}
