@@ -243,8 +243,48 @@ public class NotificacaoMalaria extends Notificacao {
 
     @Override
     public void CriarRelatorio() {
+        System.out.println("\n=== RELATÓRIO DE NOTIFICAÇÕES DE HANSENÍASE ===");
 
+        // Contadores
+        int totalNotificacoes = 0;
+        int masculino = 0;
+        int feminino = 0;
+        int crianca = 0;
+        int adolescente = 0;
+        int jovem = 0;
+        int adulto = 0;
+        int idoso = 0;
+
+        for (Notificacao n : TodasasNotificacoes) {
+            totalNotificacoes++;
+
+            // Contar sexo
+            String sexo = n.getDadosIndividuais().getSexo().name();
+            if (sexo.equalsIgnoreCase("MASCULINO")) {
+                masculino++;
+            } else if (sexo.equalsIgnoreCase("FEMININO")) {
+                feminino++;
+            }
+
+            // Contar faixa etária
+            int idade = n.getDadosIndividuais().getIdade();
+            if (idade <= 11) crianca++;
+            else if (idade <= 17) adolescente++;
+            else if (idade <= 59) adulto++;
+            else idoso++;
+        }
+
+        // Exibir resultados
+        System.out.println("Total de notificações: " + totalNotificacoes);
+        System.out.println("Sexo Masculino: " + masculino);
+        System.out.println("Sexo Feminino: " + feminino);
+        System.out.println("Faixa Etária:");
+        System.out.println(" - Criança (0–11): " + crianca);
+        System.out.println(" - Adolescente (12–17): " + adolescente);
+        System.out.println(" - Adulto (30–59): " + adulto);
+        System.out.println(" - Idoso (60+): " + idoso);
+
+        System.out.println("\n=== FIM DO RELATÓRIO ===");
     }
-
-}
+    }
 
