@@ -2,6 +2,8 @@ package Model;
 
 import Dados.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public abstract class Notificacao {
@@ -10,6 +12,12 @@ public abstract class Notificacao {
     private DadosIndividuais dadosIndividuais;
     private DadosResidencia dadosResidencia;
     private DadosTratamento dadosTratamento;
+    List<Notificacao> TodasasNotificacoes = new ArrayList<>();
+
+    public Notificacao() {
+
+    }
+
 
     public abstract void SalvarNotificacao(Scanner scanner);
 

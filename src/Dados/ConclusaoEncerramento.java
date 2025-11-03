@@ -13,12 +13,7 @@ public class ConclusaoEncerramento {
     private String Localidade_Infeccao;
     private LocalDate Data_Encerramento;
 
-    public ConclusaoEncerramento(ClassificacaoFinal classificacaoFinal,
-                                 Autoctone autoctone,
-                                 Integer codigo,
-                                 String bairro,
-                                 String localidade_Infeccao,
-                                 LocalDate data_Encerramento)
+    public ConclusaoEncerramento()
     {
         this.classificacaoFinal = classificacaoFinal;
         this.autoctone = autoctone;
