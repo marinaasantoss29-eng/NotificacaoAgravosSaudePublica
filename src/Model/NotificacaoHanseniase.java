@@ -249,3 +249,4 @@ public class NotificacaoHanseniase extends Notificacao {
 
     }
 }
+/* aaaaaaa*/
