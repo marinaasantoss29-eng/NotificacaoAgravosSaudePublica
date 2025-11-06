@@ -136,7 +136,7 @@ public class NotificacaoTuberculose extends Notificacao{
         dadosTratamento.setModoEntrada(ModoEntrada.valueOf(scanner.nextLine()));
 
         System.out.println("Digite o modo de detecção(caso novo):");
-        dadosTratamento.setModoDeteccaoCadoNovo(ModoDeteccaoCadoNovo.valueOf(scanner.nextLine()));
+        dadosTratamento.setModoDeteccaoCadoNovo(ModoDeteccaoCasoNovo.valueOf(scanner.nextLine()));
 
         System.out.println("Digite a baciloscopia:");
         dadosTratamento.setBaciloscopia(Baciloscopia.valueOf(scanner.nextLine()));

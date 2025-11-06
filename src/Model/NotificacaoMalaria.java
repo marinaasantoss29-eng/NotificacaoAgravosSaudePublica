@@ -4,11 +4,16 @@ import Dados.*;
 import Enums.*;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class NotificacaoMalaria extends Notificacao {
     public NotificacaoMalaria(DadosEpidemiologico dadosEpidemiologico, DadosGerais dadosGerais, DadosIndividuais dadosIndividuais, DadosResidencia dadosResidencia, DadosTratamento dadosTratamento) {
         super(dadosEpidemiologico, dadosGerais, dadosIndividuais, dadosResidencia, dadosTratamento);
+    }
+
+    public NotificacaoMalaria() {
+
     }
 
     @Override
@@ -27,9 +32,12 @@ public class NotificacaoMalaria extends Notificacao {
         System.out.println("Digite o Código:");
         dadosGerais.setCodigo(scanner.nextInt());
 
-        System.out.println("Digite a data de notificações:");
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        System.out.println("Digite a data de notificações (dd/MM/yyyy):");
         String DataNotificacao = scanner.nextLine();
-        dadosGerais.setDataNotificacao(LocalDate.parse(DataNotificacao));
+        dadosGerais.setDataNotificacao(LocalDate.parse(DataNotificacao, formato));
+
 
         System.out.println("Digite o Municipio:");
         dadosGerais.setMunicipio (scanner.nextLine());
@@ -39,9 +47,9 @@ public class NotificacaoMalaria extends Notificacao {
         System.out.println("Digite o nome:");
         dadosIndividuais.setNome(scanner.nextLine());
 
-        System.out.println("Digite a data de nascimento (dd-MM-yy):");
+        System.out.println("Digite a data de nascimento (dd/MM/yyyy):");
         String DataNascimento = scanner.nextLine();
-        dadosIndividuais.setDataNascimento(LocalDate.parse(DataNascimento));
+        dadosIndividuais.setDataNascimento(LocalDate.parse(DataNascimento, formato));
 
         System.out.println("Digite a idade:");
         dadosIndividuais.setIdade(scanner.nextInt());
@@ -80,6 +88,7 @@ public class NotificacaoMalaria extends Notificacao {
 
         System.out.println("Digite o número:");
         dadosResidencia.setNumero((scanner.nextInt()));
+        scanner.nextLine();
 
         System.out.println("Digite o telefone:");
         dadosResidencia.setTelefone((scanner.nextInt()));
@@ -90,22 +99,26 @@ public class NotificacaoMalaria extends Notificacao {
         DadosEpidemiologico dadosEpidemiologico = new DadosEpidemiologico();
 
         System.out.println("Digite a data de investigação (dd-MM-yy):");
-        dadosEpidemiologico.setData_investigacao(scanner.nextInt());
+        String dataInvestigacao = scanner.nextLine();
+        dadosEpidemiologico.setData_investigacao(LocalDate.parse(dataInvestigacao));
 
         System.out.println("Digite as principais atividade dos últimos 15 dias:");
-        dadosEpidemiologico.setPrincipaisAtividadesUltimos15Dias(Integer.parseInt(scanner.nextLine()));
+        dadosEpidemiologico.setPrincipaisAtividadesUltimos15Dias(Principais_atividades_ultimos_15_dias.valueOf(scanner.nextLine()));
 
         System.out.println("Digite o tipo de lâmina:");
-        dadosEpidemiologico.setTipo_lamina(Integer.parseInt(scanner.nextLine()));
+        dadosEpidemiologico.setTipo_lamina(Tipo_lamina.valueOf(scanner.nextLine()));
+
 
         System.out.println("Digite os sintomas:");
         dadosEpidemiologico.setSintomas(Sintomas.valueOf(scanner.nextLine()));
 
         DadosTratamento dadosTratamento = new DadosTratamento();
 
-        System.out.println("Digite a data de investigação (dd-MM-yy):");
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        System.out.println("Digite a data de investigação (dd/MM/yyyy):");
         String dataInvestigacao = scanner.nextLine();
-        dadosTratamento.setDataInvestigacao(LocalDate.parse(dataInvestigacao));
+        dadosTratamento.setDataInvestigacao(LocalDate.parse(dataInvestigacao, formato));
 
         System.out.println("Digite o resultado do exame:");
         dadosTratamento.setResultadoExame(ResultadoExame.valueOf(scanner.nextLine()));
@@ -113,33 +126,11 @@ public class NotificacaoMalaria extends Notificacao {
         System.out.println("Digite o esquema de tratamento:");
         dadosTratamento.setEsquemaTratamentoManuelTerapeuticoMalaria(EsquemaTratamentoManuelTerapeuticoMalaria.valueOf(scanner.nextLine()));
 
-        System.out.println("Digite o número de lesões cutâneas:");
-        dadosTratamento.setNumLesoesCutaneas(scanner.nextInt());
-
-        System.out.println("Digite a forma clínica:");
-        dadosTratamento.setFormaClinica(FormaClinica.valueOf(scanner.nextLine()));
-
-        System.out.println("Digite a classificação operacional:");
-        dadosTratamento.setClassificacaoOperacional(ClassificacaoOperacional.valueOf(scanner.nextLine()));
-
-        System.out.println("Digite o número de nervos afetados:");
-        dadosTratamento.setNumNervosAfetados(scanner.nextInt());
-
-        System.out.println("Digite o modo de entrada:");
-        dadosTratamento.setModoEntrada(ModoEntrada.valueOf(scanner.nextLine()));
-
-        System.out.println("Digite o modo de detecção(caso novo):");
-        dadosTratamento.setModoDeteccaoCadoNovo(ModoDeteccaoCadoNovo.valueOf(scanner.nextLine()));
-
-        System.out.println("Digite a baciloscopia:");
-        dadosTratamento.setBaciloscopia(Baciloscopia.valueOf(scanner.nextLine()));
 
         System.out.println("Digite a dat de início do tratamento (dd-MM-yy):");
         String dataInicioTratamento = scanner.nextLine();
         dadosTratamento.setDataInicioTratamento(LocalDate.parse(dataInicioTratamento));
 
-        System.out.println("Digite o número de contatos registrados:");
-        dadosTratamento.setNumeroDeConatosRegistrados(scanner.nextInt());
 
         ConclusaoEncerramento conclusaoEncerramento = new ConclusaoEncerramento();
 

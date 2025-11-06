@@ -10,6 +10,7 @@ public class DadosResidencia {
     private Integer Telefone;
     private Zona zona;
 
+
     public DadosResidencia() {
         Municipio = municipio;
         this.UF = UF;
@@ -19,6 +20,7 @@ public class DadosResidencia {
         Telefone = telefone;
         this.zona = zona;
     }
+
 
     public String getMunicipio() {
         return Municipio;

@@ -3,13 +3,20 @@ package Model;
 import Dados.*;
 import Enums.*;
 
+import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 import java.util.Scanner;
+
+import static java.lang.Integer.*;
 
 public class NotificacaoHanseniase extends Notificacao {
 
     public NotificacaoHanseniase(DadosEpidemiologico dadosEpidemiologico, DadosGerais dadosGerais, DadosIndividuais dadosIndividuais, DadosResidencia dadosResidencia, DadosTratamento dadosTratamento) {
         super(dadosEpidemiologico, dadosGerais, dadosIndividuais, dadosResidencia, dadosTratamento);
+    }
+
+    public NotificacaoHanseniase() {
+
     }
 
     @Override
@@ -27,6 +34,7 @@ public class NotificacaoHanseniase extends Notificacao {
 
         System.out.println("Digite o Código:");
         dadosGerais.setCodigo(scanner.nextInt());
+        scanner.nextLine();
 
         System.out.println("Digite a data de notificações:");
         String DataNotificacao = scanner.nextLine();
@@ -91,13 +99,14 @@ public class NotificacaoHanseniase extends Notificacao {
         DadosEpidemiologico dadosEpidemiologico = new DadosEpidemiologico();
 
         System.out.println("Digite a data de investigação (dd-MM-yy):");
-        dadosEpidemiologico.setData_investigacao(scanner.nextInt());
+        String dataInvestigação = scanner.nextLine();
+        dadosEpidemiologico.setData_investigacao(LocalDate.parse(dataInvestigação));
 
         System.out.println("Digite as principais atividade dos últimos 15 dias:");
-        dadosEpidemiologico.setPrincipaisAtividadesUltimos15Dias(Integer.parseInt(scanner.nextLine()));
+        dadosEpidemiologico.setPrincipaisAtividadesUltimos15Dias(Principais_atividades_ultimos_15_dias.valueOf((scanner.nextLine())));
 
         System.out.println("Digite o tipo de lâmina:");
-        dadosEpidemiologico.setTipo_lamina(Integer.parseInt(scanner.nextLine()));
+        dadosEpidemiologico.setTipo_lamina(Tipo_lamina.valueOf(scanner.nextLine()));
 
         System.out.println("Digite os sintomas:");
         dadosEpidemiologico.setSintomas(Sintomas.valueOf(scanner.nextLine()));
@@ -130,7 +139,7 @@ public class NotificacaoHanseniase extends Notificacao {
         dadosTratamento.setModoEntrada(ModoEntrada.valueOf(scanner.nextLine()));
 
         System.out.println("Digite o modo de detecção(caso novo):");
-        dadosTratamento.setModoDeteccaoCadoNovo(ModoDeteccaoCadoNovo.valueOf(scanner.nextLine()));
+        dadosTratamento.setModoDeteccaoCadoNovo(ModoDeteccaoCasoNovo.valueOf(scanner.nextLine()));
 
         System.out.println("Digite a baciloscopia:");
         dadosTratamento.setBaciloscopia(Baciloscopia.valueOf(scanner.nextLine()));
@@ -279,8 +288,7 @@ public class NotificacaoHanseniase extends Notificacao {
             System.out.println("Total de notificações: " + totalNotificacoes);
             System.out.println("Sexo Masculino: " + masculino);
             System.out.println("Sexo Feminino: " + feminino);
-            System.out.println("Faixa Etária:");
-            System.out.println(" - Criança (0–11): " + crianca);
+            System.out.println("Faixa Etária:");System.out.println(" - Criança (0–11): " + crianca);
             System.out.println(" - Adolescente (12–17): " + adolescente);
             System.out.println(" - Adulto (30–59): " + adulto);
             System.out.println(" - Idoso (60+): " + idoso);

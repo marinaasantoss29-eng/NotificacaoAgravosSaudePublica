@@ -1,6 +1,6 @@
 package Enums;
 
-public enum ModoDeteccaoCadoNovo {
+public enum ModoDeteccaoCasoNovo {
     Encaminhamento,
     Demanda_Espontanea,
     Exame_coletividade,

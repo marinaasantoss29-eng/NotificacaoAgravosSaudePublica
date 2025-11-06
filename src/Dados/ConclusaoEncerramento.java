@@ -17,10 +17,10 @@ public class ConclusaoEncerramento {
     {
         this.classificacaoFinal = classificacaoFinal;
         this.autoctone = autoctone;
-        Codigo = codigo;
-        Bairro = bairro;
-        Localidade_Infeccao = localidade_Infeccao;
-        Data_Encerramento = data_Encerramento;
+        this.Codigo = codigo;
+        this.Bairro = bairro;
+        this.Localidade_Infeccao = localidade_Infeccao;
+        this.Data_Encerramento = data_Encerramento;
     }
 
     public ClassificacaoFinal getClassificacaoFinal() {

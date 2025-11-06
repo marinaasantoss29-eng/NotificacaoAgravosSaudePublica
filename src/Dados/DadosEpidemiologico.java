@@ -4,33 +4,29 @@ import Enums.Principais_atividades_ultimos_15_dias;
 import Enums.Sintomas;
 import Enums.Tipo_lamina;
 
+import java.time.LocalDate;
+
 public class DadosEpidemiologico {
-    private Integer Data_investigacao;
+    private LocalDate data_investigacao;
     private Principais_atividades_ultimos_15_dias principaisAtividadesUltimos15Dias;
     private Tipo_lamina tipo_lamina;
     private Sintomas sintomas;
 
-    public DadosEpidemiologico()
-    {
-        Data_investigacao = data_investigacao;
-        this.principaisAtividadesUltimos15Dias = principaisAtividadesUltimos15Dias;
-        this.tipo_lamina = tipo_lamina;
-        this.sintomas = sintomas;
+    public DadosEpidemiologico() {}
+
+    public LocalDate getData_investigacao() {
+        return data_investigacao;
     }
 
-    public Integer getData_investigacao() {
-        return Data_investigacao;
-    }
-
-    public void setData_investigacao(Integer data_investigacao) {
-        Data_investigacao = data_investigacao;
+    public void setData_investigacao(LocalDate data_investigacao) {
+        this.data_investigacao = data_investigacao;
     }
 
     public Principais_atividades_ultimos_15_dias getPrincipaisAtividadesUltimos15Dias() {
         return principaisAtividadesUltimos15Dias;
     }
 
-    public void setPrincipaisAtividadesUltimos15Dias(int principaisAtividadesUltimos15Dias) {
+    public void setPrincipaisAtividadesUltimos15Dias(Principais_atividades_ultimos_15_dias principaisAtividadesUltimos15Dias) {
         this.principaisAtividadesUltimos15Dias = principaisAtividadesUltimos15Dias;
     }
 
@@ -38,7 +34,7 @@ public class DadosEpidemiologico {
         return tipo_lamina;
     }
 
-    public void setTipo_lamina(int tipo_lamina) {
+    public void setTipo_lamina(Tipo_lamina tipo_lamina) {
         this.tipo_lamina = tipo_lamina;
     }
 

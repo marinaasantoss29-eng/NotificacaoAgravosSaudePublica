@@ -13,26 +13,25 @@ public class DadosTratamento {
     private ClassificacaoOperacional classificacaoOperacional;
     private Integer NumNervosAfetados;
     private ModoEntrada modoEntrada;
-    private ModoDeteccaoCadoNovo modoDeteccaoCadoNovo;
+    private ModoDeteccaoCasoNovo modoDeteccaoCadoNovo;
     private Baciloscopia baciloscopia;
     private LocalDate DataInicioTratamento;
     private Integer NumeroDeConatosRegistrados;
 
 
-    public DadosTratamento()
-    {
-        DataInvestigacao = dataInvestigacao;
+    public DadosTratamento() {
+        DataInvestigacao = DataInvestigacao;
         this.resultadoExame = resultadoExame;
         this.esquemaTratamentoManuelTerapeuticoMalaria = esquemaTratamentoManuelTerapeuticoMalaria;
-        NumLesoesCutaneas = numLesoesCutaneas;
+        NumLesoesCutaneas = NumLesoesCutaneas;
         this.formaClinica = formaClinica;
         this.classificacaoOperacional = classificacaoOperacional;
-        NumNervosAfetados = numNervosAfetados;
+        NumNervosAfetados = NumNervosAfetados;
         this.modoEntrada = modoEntrada;
         this.modoDeteccaoCadoNovo = modoDeteccaoCadoNovo;
         this.baciloscopia = baciloscopia;
-        DataInicioTratamento = dataInicioTratamento;
-        NumeroDeConatosRegistrados = numeroDeConatosRegistrados;
+        DataInicioTratamento = DataInicioTratamento;
+        NumeroDeConatosRegistrados = NumeroDeConatosRegistrados;
     }
 
     public LocalDate getDataInvestigacao() {
@@ -99,11 +98,11 @@ public class DadosTratamento {
         this.modoEntrada = modoEntrada;
     }
 
-    public ModoDeteccaoCadoNovo getModoDeteccaoCadoNovo() {
+    public ModoDeteccaoCasoNovo getModoDeteccaoCadoNovo() {
         return modoDeteccaoCadoNovo;
     }
 
-    public void setModoDeteccaoCadoNovo(ModoDeteccaoCadoNovo modoDeteccaoCadoNovo) {
+    public void setModoDeteccaoCadoNovo(ModoDeteccaoCasoNovo modoDeteccaoCadoNovo) {
         this.modoDeteccaoCadoNovo = modoDeteccaoCadoNovo;
     }
 
