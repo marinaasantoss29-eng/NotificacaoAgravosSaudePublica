@@ -12,15 +12,7 @@ public class DadosResidencia {
 
 
     public DadosResidencia() {
-        Municipio = municipio;
-        this.UF = UF;
-        Bairro = bairro;
-        Logradouro = logradouro;
-        Numero = numero;
-        Telefone = telefone;
-        this.zona = zona;
     }
-
 
     public String getMunicipio() {
         return Municipio;

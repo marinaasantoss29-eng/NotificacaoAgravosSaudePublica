@@ -22,7 +22,7 @@ public class NotificacaoHanseniase extends Notificacao {
     @Override
     public void SalvarNotificacao(Scanner scanner) {
         DadosGerais dadosGerais = new DadosGerais();
-
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         System.out.println("Digite o tipo de notificação:");
         dadosGerais.setTipoNotificacao(scanner.nextLine());
 
@@ -36,29 +36,30 @@ public class NotificacaoHanseniase extends Notificacao {
         dadosGerais.setCodigo(scanner.nextInt());
         scanner.nextLine();
 
-        System.out.println("Digite a data de notificações:");
-        String DataNotificacao = scanner.nextLine();
-        dadosGerais.setDataNotificacao(LocalDate.parse(DataNotificacao));
+        System.out.println("Digite a data de notificações (dd/MM/yyyy):");
+        String dataNotificacao = scanner.nextLine();
+        dadosGerais.setDataNotificacao(LocalDate.parse(dataNotificacao));
 
         System.out.println("Digite o Municipio:");
-        dadosGerais.setMunicipio (scanner.nextLine());
+        dadosGerais.setMunicipio(scanner.nextLine());
 
         DadosIndividuais dadosIndividuais = new DadosIndividuais();
 
         System.out.println("Digite o nome:");
         dadosIndividuais.setNome(scanner.nextLine());
 
-        System.out.println("Digite a data de nascimento (dd-MM-yy):");
-        String DataNascimento = scanner.nextLine();
-        dadosIndividuais.setDataNascimento(LocalDate.parse(DataNascimento));
+        System.out.println("Digite a data de nascimento (dd/MM/yyyy):");
+        String dataNascimento = scanner.nextLine();
+        dadosIndividuais.setDataNascimento(LocalDate.parse(dataNascimento, formato));
 
         System.out.println("Digite a idade:");
         dadosIndividuais.setIdade(scanner.nextInt());
+        scanner.nextLine();
 
-        System.out.println("Digite o sexo:");
+        System.out.println("Digite o sexo(Masculino/Feminino):");
         dadosIndividuais.setSexo(Sexo.valueOf(scanner.nextLine()));
 
-        System.out.println("A paciente é gestante?:");
+        System.out.println("A paciente é gestante?(Sim/Não):");
         dadosIndividuais.setGestante(Gestante.valueOf(scanner.nextLine()));
 
         System.out.println("Digite a escolaridade:");
@@ -89,21 +90,23 @@ public class NotificacaoHanseniase extends Notificacao {
 
         System.out.println("Digite o número:");
         dadosResidencia.setNumero((scanner.nextInt()));
+        scanner.nextLine();
 
         System.out.println("Digite o telefone:");
         dadosResidencia.setTelefone((scanner.nextInt()));
+        scanner.nextLine();
 
         System.out.println("Digite a zona (Urbana ou Rural):");
-        dadosResidencia.setZona(Zona.valueOf((scanner.nextLine())));
+        dadosResidencia.setZona(Zona.valueOf(scanner.nextLine()));
 
         DadosEpidemiologico dadosEpidemiologico = new DadosEpidemiologico();
 
-        System.out.println("Digite a data de investigação (dd-MM-yy):");
-        String dataInvestigação = scanner.nextLine();
-        dadosEpidemiologico.setData_investigacao(LocalDate.parse(dataInvestigação));
+        System.out.println("Digite a data de investigação (dd/MM/yyyy):");
+        String dataInvestigacao = scanner.nextLine();
+        dadosEpidemiologico.setData_investigacao(LocalDate.parse(dataInvestigacao));
 
         System.out.println("Digite as principais atividade dos últimos 15 dias:");
-        dadosEpidemiologico.setPrincipaisAtividadesUltimos15Dias(Principais_atividades_ultimos_15_dias.valueOf((scanner.nextLine())));
+        dadosEpidemiologico.setPrincipaisAtividadesUltimos15Dias(Principais_atividades_ultimos_15_dias.valueOf(scanner.nextLine()));
 
         System.out.println("Digite o tipo de lâmina:");
         dadosEpidemiologico.setTipo_lamina(Tipo_lamina.valueOf(scanner.nextLine()));
@@ -113,9 +116,9 @@ public class NotificacaoHanseniase extends Notificacao {
 
         DadosTratamento dadosTratamento = new DadosTratamento();
 
-        System.out.println("Digite a data de investigação (dd-MM-yy):");
-        String dataInvestigacao = scanner.nextLine();
-        dadosTratamento.setDataInvestigacao(LocalDate.parse(dataInvestigacao));
+        System.out.println("Digite a data de investigação (dd/MM/yyyy):");
+        String dataTrat = scanner.nextLine();
+        dadosTratamento.setDataInvestigacao(LocalDate.parse(dataTrat, formato));
 
         System.out.println("Digite o resultado do exame:");
         dadosTratamento.setResultadoExame(ResultadoExame.valueOf(scanner.nextLine()));
@@ -125,6 +128,7 @@ public class NotificacaoHanseniase extends Notificacao {
 
         System.out.println("Digite o número de lesões cutâneas:");
         dadosTratamento.setNumLesoesCutaneas(scanner.nextInt());
+        scanner.nextLine();
 
         System.out.println("Digite a forma clínica:");
         dadosTratamento.setFormaClinica(FormaClinica.valueOf(scanner.nextLine()));
@@ -134,6 +138,7 @@ public class NotificacaoHanseniase extends Notificacao {
 
         System.out.println("Digite o número de nervos afetados:");
         dadosTratamento.setNumNervosAfetados(scanner.nextInt());
+        scanner.nextLine();
 
         System.out.println("Digite o modo de entrada:");
         dadosTratamento.setModoEntrada(ModoEntrada.valueOf(scanner.nextLine()));
@@ -144,12 +149,13 @@ public class NotificacaoHanseniase extends Notificacao {
         System.out.println("Digite a baciloscopia:");
         dadosTratamento.setBaciloscopia(Baciloscopia.valueOf(scanner.nextLine()));
 
-        System.out.println("Digite a dat de início do tratamento (dd-MM-yy):");
+        System.out.println("Digite a dat de início do tratamento (dd/MM/yyyy):");
         String dataInicioTratamento = scanner.nextLine();
-        dadosTratamento.setDataInicioTratamento(LocalDate.parse(dataInicioTratamento));
+        dadosTratamento.setDataInicioTratamento(LocalDate.parse(dataInicioTratamento, formato));
 
         System.out.println("Digite o número de contatos registrados:");
         dadosTratamento.setNumeroDeConatosRegistrados(scanner.nextInt());
+        scanner.nextLine();
 
         ConclusaoEncerramento conclusaoEncerramento = new ConclusaoEncerramento();
 
@@ -165,12 +171,14 @@ public class NotificacaoHanseniase extends Notificacao {
         System.out.println("Digite a localidade de infecção:");
         conclusaoEncerramento.setLocalidade_Infeccao(scanner.nextLine());
 
-        System.out.println("Digite a data de encerramento (dd-MM-yy):");
+        System.out.println("Digite a data de encerramento (dd/MM/yyyy):");
         String dataEncerramento = scanner.nextLine();
         conclusaoEncerramento.setData_Encerramento(LocalDate.parse(dataEncerramento));
 
-        TodasasNotificacoes.add(this);
+        Arquivos.ArquivoNotificacao.salvarEmArquivo(this, "Hanseníase");
 
+        TodasasNotificacoes.add(this);
+        System.out.println("Notificação de Hanseníase salva!");
 
     }
 

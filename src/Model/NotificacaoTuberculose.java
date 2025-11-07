@@ -96,14 +96,15 @@ public class NotificacaoTuberculose extends Notificacao{
 
         DadosEpidemiologico dadosEpidemiologico = new DadosEpidemiologico();
 
-        System.out.println("Digite a data de investigação (dd-MM-yy):");
-        dadosEpidemiologico.setData_investigacao(scanner.nextInt());
+        System.out.println("Digite a data de investigação (dd/MM/yyyy):");
+        String dataInvestigacaoEpid = scanner.nextLine();
+        dadosEpidemiologico.setData_investigacao(LocalDate.parse(dataInvestigacaoEpid));
 
         System.out.println("Digite as principais atividade dos últimos 15 dias:");
-        dadosEpidemiologico.setPrincipaisAtividadesUltimos15Dias(Integer.parseInt(scanner.nextLine()));
+        dadosEpidemiologico.setPrincipaisAtividadesUltimos15Dias(Principais_atividades_ultimos_15_dias.valueOf(scanner.nextLine()));
 
         System.out.println("Digite o tipo de lâmina:");
-        dadosEpidemiologico.setTipo_lamina(Integer.parseInt(scanner.nextLine()));
+        dadosEpidemiologico.setTipo_lamina(Tipo_lamina.valueOf(scanner.nextLine()));
 
         System.out.println("Digite os sintomas:");
         dadosEpidemiologico.setSintomas(Sintomas.valueOf(scanner.nextLine()));
@@ -166,7 +167,10 @@ public class NotificacaoTuberculose extends Notificacao{
         String dataEncerramento = scanner.nextLine();
         conclusaoEncerramento.setData_Encerramento(LocalDate.parse(dataEncerramento));
 
+        Arquivos.ArquivoNotificacao.salvarEmArquivo(this, "Tuberculose");
+
         TodasasNotificacoes.add(this);
+        System.out.println("Notificação de Tuberculose salva!");
 
     }
 

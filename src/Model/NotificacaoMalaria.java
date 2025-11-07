@@ -1,5 +1,6 @@
 package Model;
 
+import Arquivos.ArquivoNotificacao;
 import Dados.*;
 import Enums.*;
 
@@ -18,6 +19,8 @@ public class NotificacaoMalaria extends Notificacao {
 
     @Override
     public void SalvarNotificacao(Scanner scanner) {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
         DadosGerais dadosGerais = new DadosGerais();
 
         System.out.println("Digite o tipo de notificação:");
@@ -31,12 +34,11 @@ public class NotificacaoMalaria extends Notificacao {
 
         System.out.println("Digite o Código:");
         dadosGerais.setCodigo(scanner.nextInt());
-
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        scanner.nextLine();
 
         System.out.println("Digite a data de notificações (dd/MM/yyyy):");
-        String DataNotificacao = scanner.nextLine();
-        dadosGerais.setDataNotificacao(LocalDate.parse(DataNotificacao, formato));
+        String dataNotificacao = scanner.nextLine();
+        dadosGerais.setDataNotificacao(LocalDate.parse(dataNotificacao, formato));
 
 
         System.out.println("Digite o Municipio:");
@@ -48,13 +50,14 @@ public class NotificacaoMalaria extends Notificacao {
         dadosIndividuais.setNome(scanner.nextLine());
 
         System.out.println("Digite a data de nascimento (dd/MM/yyyy):");
-        String DataNascimento = scanner.nextLine();
-        dadosIndividuais.setDataNascimento(LocalDate.parse(DataNascimento, formato));
+        String dataNascimento = scanner.nextLine();
+        dadosIndividuais.setDataNascimento(LocalDate.parse(dataNascimento, formato));
 
         System.out.println("Digite a idade:");
         dadosIndividuais.setIdade(scanner.nextInt());
+        scanner.nextLine();
 
-        System.out.println("Digite o sexo:");
+        System.out.println("Digite o sexo (Masculino/Feminino):");
         dadosIndividuais.setSexo(Sexo.valueOf(scanner.nextLine()));
 
         System.out.println("A paciente é gestante?:");
@@ -68,6 +71,7 @@ public class NotificacaoMalaria extends Notificacao {
 
         System.out.println("Digite o número do prontuário:");
         dadosIndividuais.setnProntuario(scanner.nextInt());
+        scanner.nextLine();
 
         System.out.println("Digite a ocupação:");
         dadosIndividuais.setOcupacao(scanner.nextLine());
@@ -87,18 +91,19 @@ public class NotificacaoMalaria extends Notificacao {
         dadosResidencia.setLogradouro((scanner.nextLine()));
 
         System.out.println("Digite o número:");
-        dadosResidencia.setNumero((scanner.nextInt()));
+        dadosResidencia.setNumero(scanner.nextInt());
         scanner.nextLine();
 
         System.out.println("Digite o telefone:");
-        dadosResidencia.setTelefone((scanner.nextInt()));
+        dadosResidencia.setTelefone(scanner.nextInt());
+        scanner.nextLine();
 
-        System.out.println("Digite a zona (Urbana ou Rural):");
-        dadosResidencia.setZona(Zona.valueOf((scanner.nextLine())));
+        System.out.println("Digite a zona (Urbana/Rural):");
+        dadosResidencia.setZona(Zona.valueOf(scanner.nextLine()));
 
         DadosEpidemiologico dadosEpidemiologico = new DadosEpidemiologico();
 
-        System.out.println("Digite a data de investigação (dd-MM-yy):");
+        System.out.println("Digite a data de investigação (dd/MM/yyyy):");
         String dataInvestigacao = scanner.nextLine();
         dadosEpidemiologico.setData_investigacao(LocalDate.parse(dataInvestigacao));
 
@@ -114,10 +119,8 @@ public class NotificacaoMalaria extends Notificacao {
 
         DadosTratamento dadosTratamento = new DadosTratamento();
 
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
         System.out.println("Digite a data de investigação (dd/MM/yyyy):");
-        String dataInvestigacao = scanner.nextLine();
+        String dataTrat = scanner.nextLine();
         dadosTratamento.setDataInvestigacao(LocalDate.parse(dataInvestigacao, formato));
 
         System.out.println("Digite o resultado do exame:");
@@ -126,8 +129,7 @@ public class NotificacaoMalaria extends Notificacao {
         System.out.println("Digite o esquema de tratamento:");
         dadosTratamento.setEsquemaTratamentoManuelTerapeuticoMalaria(EsquemaTratamentoManuelTerapeuticoMalaria.valueOf(scanner.nextLine()));
 
-
-        System.out.println("Digite a dat de início do tratamento (dd-MM-yy):");
+        System.out.println("Digite a dat de início do tratamento (dd/MM/yyyy):");
         String dataInicioTratamento = scanner.nextLine();
         dadosTratamento.setDataInicioTratamento(LocalDate.parse(dataInicioTratamento));
 
@@ -137,7 +139,7 @@ public class NotificacaoMalaria extends Notificacao {
         System.out.println("Digite a classificação final:");
         conclusaoEncerramento.setClassificacaoFinal(ClassificacaoFinal.valueOf(scanner.nextLine()));
 
-        System.out.println("Digite se é autóctone(sim ou não):");
+        System.out.println("Digite se é autóctone(Sim/Não):");
         conclusaoEncerramento.setAutoctone(Autoctone.valueOf(scanner.nextLine()));
 
         System.out.println("Digite o bairro:");
@@ -146,12 +148,14 @@ public class NotificacaoMalaria extends Notificacao {
         System.out.println("Digite a localidade de infecção:");
         conclusaoEncerramento.setLocalidade_Infeccao(scanner.nextLine());
 
-        System.out.println("Digite a data de encerramento (dd-MM-yy):");
+        System.out.println("Digite a data de encerramento (dd/MM/yyyy):");
         String dataEncerramento = scanner.nextLine();
         conclusaoEncerramento.setData_Encerramento(LocalDate.parse(dataEncerramento));
 
-        TodasasNotificacoes.add(this);
+        Arquivos.ArquivoNotificacao.salvarEmArquivo(this, "Malária");
 
+        TodasasNotificacoes.add(this);
+        System.out.println("Notificação de Malária salva!");
 
     }
 
