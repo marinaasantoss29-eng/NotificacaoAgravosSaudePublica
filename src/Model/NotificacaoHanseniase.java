@@ -3,11 +3,12 @@ package Model;
 import Dados.*;
 import Enums.*;
 
+import Arquivos.ArquivoNotificacao;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-import static java.lang.Integer.*;
+
 
 public class NotificacaoHanseniase extends Notificacao {
 

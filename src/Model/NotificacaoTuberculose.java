@@ -4,6 +4,7 @@ package Model;
 import Dados.*;
 import Enums.*;
 
+import Arquivos.ArquivoNotificacao;
 import java.time.LocalDate;
 import java.util.Scanner;
 
